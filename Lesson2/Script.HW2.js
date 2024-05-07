@@ -223,7 +223,7 @@ else{
 // // це число (у першу, другу чи третю).
 
 let day = 31;
-if(day <= 10){
+if( day > 0 && day <= 10){
     console.log('Число є в першій декаді');
 }
 else if(day > 10 && day <=20){
@@ -282,7 +282,7 @@ if(firstNum > secondNum){
 // // які приводиться до false, а це 0 null undefined і тд).
 
 let a = 1;
-if(! !!a){
+if(!a){
     a = 'default';
 }
 console.log(a);
