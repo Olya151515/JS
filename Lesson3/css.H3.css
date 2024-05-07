@@ -1,0 +1,21 @@
+.boxDiv{
+    border: 1px solid;
+    width: 15vw;
+    margin:5px;
+    padding: 5px;
+}
+.flex{
+    display: flex;
+    justify-content: space-around;
+}
+.product-card{
+    width: 30vw;
+}
+
+.product-image{
+    width:20vw;
+}
+.product-title{
+    text-align: center;
+    font-size: 30px;
+}
