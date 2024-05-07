@@ -200,7 +200,7 @@ let books = [
         title: "Harry Potter and the Sorcerer's Stone",
         pageCount: 320,
         authors: ["J.K."," Rowling"],
-        genres: ["fantasy","classic"]
+        genres: ['fantasy','classic']
     },
     {
         title: "The Lord of the Rings",
@@ -216,15 +216,21 @@ let books = [
     }
 ];
 // //// -знайти наібльшу книжку.
-for (let i = 0; i < books.length - 1; i++) {
-    if(books[i].pageCount > books[i+1].pageCount){
-        console.log(books[i]);
+
+let bigBook = books[0];
+for (const book of books) {
+    if(book.pageCount > bigBook.pageCount){
+        bigBook = book;
     }
 }
+console.log(bigBook);
+
 // //// - знайти книжку/ки з найбільшою кількістю жанрів
 
-for (let i = 0; i < books.length-1; i++) {
-    if(books[i].genres.length > books[i+1].genres.length){
-        console.log(books[i]);
+let bigGenre = books[0];
+for (const book of books) {
+    if(book.genres.length > bigGenre.genres.length){
+        bigGenre = book;
     }
 }
+console.log(bigGenre);
