@@ -138,8 +138,7 @@ searchCard(cards, (item) => item.color === 'red');
 //  - всі буби
 searchCard(cards , (item) => item.cardSuit === 'diamond');
 //  - всі трефи від 9 та більше
-// ??
-
+searchCard(cards,(item) =>  item.cardSuit === 'clubs'&& item.value !== 6 && item.value !== 7 && item.value !== 8 )
 
 // =========================
 //
