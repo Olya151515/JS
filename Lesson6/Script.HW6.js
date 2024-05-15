@@ -25,22 +25,25 @@ console.log(string3upper.toLowerCase());
 // - Є "брудна" стрінга let str = ' dirty string   ' . Почистити її від зайвих пробілів.
 //
 let dirtyStr = ' dirty string   ';
-let indexStart;
-let indexEnd;
-for (let i = 0; i < dirtyStr.length; i++) {
-    if(dirtyStr[i] !== ' '){
-        indexStart = i;
-        break;
-    }
-}
-for (let i = dirtyStr.length-1; i >=0 ; i--) {
-    if(dirtyStr[i] !== ' '){
-        indexEnd = i+1;
-        break;
-    }
-}
-let cleanStr = dirtyStr.substring(indexStart,indexEnd);
-console.log(cleanStr);
+console.log(dirtyStr.trim());
+
+// let indexStart;
+// let indexEnd;
+// for (let i = 0; i < dirtyStr.length; i++) {
+//     if(dirtyStr[i] !== ' '){
+//         indexStart = i;
+//         break;
+//     }
+// }
+// for (let i = dirtyStr.length-1; i >=0 ; i--) {
+//     if(dirtyStr[i] !== ' '){
+//         indexEnd = i+1;
+//         break;
+//     }
+// }
+// let cleanStr = dirtyStr.substring(indexStart,indexEnd);
+// console.log(cleanStr);
+
 
 // - Напишіть функцію stringToArray(str), яка перетворює рядок на масив слів.
 //     let str = 'Ревуть воли як ясла повні';
@@ -82,20 +85,14 @@ let coursesAndDurationArray = [
     {title: 'Frontend', monthDuration: 4}
 ];
 //  -- відсортувати його за спаданням за monthDuration
- const sortedArr =  coursesAndDurationArray.sort((a,b) =>{
-    return b.monthDuration - a.monthDuration;
-})
+ const sortedArr  =  coursesAndDurationArray.sort((a,b) => b.monthDuration - a.monthDuration);
 console.log(sortedArr);
-//  -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
-const  filtered = coursesAndDurationArray.reduce((accumulator,course)=>{
-        if(course.monthDuration > 5){
-            accumulator.push(course);
-        }
-        return accumulator;
-},[]);
-console.log(filtered);
-//  -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
 
+//  -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
+const  filtered = coursesAndDurationArray.filter(value=> value.monthDuration > 5);
+console.log(filtered);
+
+//  -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
 const  mapFunc = coursesAndDurationArray.map((value,index )=> {
     return { id:index+1,...value};
 })
@@ -141,7 +138,7 @@ searchCard(cards, (item) => item.color === 'red');
 //  - всі буби
 searchCard(cards , (item) => item.cardSuit === 'diamond');
 //  - всі трефи від 9 та більше
-
+// ??
 
 
 // =========================
@@ -238,8 +235,6 @@ let coursesArray = [
         modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
     }
 ];
-// --написати пошук всіх об'єктів, в який в modules є sass
-
 const filter = function (arr, callback){
     let newArr =[];
     for (const item of arr) {
@@ -251,6 +246,7 @@ const filter = function (arr, callback){
     }
     return newArr;
 }
+// --написати пошук всіх об'єктів, в який в modules є sass
 console.log(filter(coursesArray,  (itemKey) =>{
     return itemKey === 'sass'
 }));
