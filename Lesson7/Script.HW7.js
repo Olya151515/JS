@@ -227,12 +227,10 @@ let arrayNum = [11,22,33,44,55,66,77,88];
 // //створити власний foreach
 Array.prototype.myForEach = function (callback){
     for (const item of this) {
-        if(callback(item)){
-           console.log(item);
-        }
+        callback(item);
     }
 }
-arrayNum.myForEach((value) => value);
+arrayNum.myForEach((value) => console.log(value));
 
 // //створити власний filter
 Array.prototype.myFilter = function (callback){
@@ -250,10 +248,8 @@ console.log(arrayNum.myFilter((item) => item > 50));
 Array.prototype.myMap = function ( callback){
     let arr =[];
     for (const item of this) {
-        if(callback(item)){
-            arr.push(item);
-        }
+        arr.push(callback(item));
     }
     return arr;
 };
-console.log(arrayNum.myMap(num => num > 60));
+console.log(arrayNum.myMap(num => num*2));
