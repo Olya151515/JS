@@ -133,15 +133,18 @@ let simpsons = [
 for (const item of simpsons) {
     let div = document.createElement('div');
     div.classList.add('member');
-    for (const itemKey in item) {
-        let span = document.createElement('span')
-        span.innerHTML = `<strong>${itemKey}</strong> : ${item[itemKey]} <br>`
-        div.appendChild(span);
+    let span = document.createElement('span')
+    span.innerHTML = `<strong> Name:</strong>${item.name}<br>
+    <strong> Surname:</strong>${item.surname}<br>
+    <strong> Age:</strong>${item.age}<br>
+    <strong> Info:</strong>${item.info}<br>`;
+    let img = document.createElement('img');
+    if(item.photo){
+        img.src = item.photo;
     }
+    div.append(span,img );
     document.body.appendChild(div);
 }
-
-
 
 
 // =========================
