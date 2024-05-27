@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #text{
+            border: 1px solid;
+            width: 300px;
+            height: 150px;
+        }
+        #divNum{
+            border: 1px solid;
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        table{
+            border: 1px solid;
+            display: flex;
+
+            flex-direction: column;
+        }
+        .tr-flex{
+            display: flex;
+        }
+        .td-flex{
+            display: flex;
+            margin: 5px;
+            border: 1px solid;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="text">
+</div>
+<button id="btnText">click</button><br>
+<hr>
+
+<form id ='f2'>
+    <label for="ageUser">Enter your age:</label>
+    <input type="number" name="ageUser" id="ageUser"><br>
+    <button>Check</button>
+    <span id="CheckAge"></span>
+</form>
+
+<hr>
+<a href="index.html" id="index">Index page</a><br>
+<a href="session.html" id="session">Session page</a>
+<hr>
+
+<div id="divNum">0</div>
+<hr>
+    <form id="f1">
+        <label for="username">Enter your name:</label>
+        <input type="text" name="username" id="username"><br>
+        <label for="surname">Enter your surname:</label>
+        <input type="text" name="surname" id="surname"><br>
+        <label for="age">Enter your age:</label>
+        <input type="number" name="age" id="age"><br>
+        <button>send</button>
+    </form>
+<div id="description"></div>
+<hr>
+
+<form  id="f3">
+    <label for="countLines">Enter count lines:</label>
+    <input type="number" name="countLines" id="countLines"><br>
+    <label for="countColumns">Enter count columns:</label>
+    <input type="number" name="countColumns" id="countColumns"><br>
+    <label for="textColumns">Enter text:</label>
+    <input type="text" name="textColumns" id="textColumns"><br>
+    <button id="createTable">Create</button>
+</form>
+<table id="table"></table>
+
+<hr>
+
+    <script src="Script.HW10.js"></script>
+
+
+
+</body>
+</html>
