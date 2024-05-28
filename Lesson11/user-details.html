@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="user"></div>
+<script>
+    let id = localStorage.getItem('id');
+    let baseURL = 'https://jsonplaceholder.typicode.com/users';
+    let userUrl = baseURL + '/'+id
+    let userBlock = document.getElementsByClassName('user')[0];
+
+    fetch(userUrl)
+    .then(value =>value.json())
+    .then(data => {
+        let user = data;
+        let userContainer = document.createElement('div');
+        for (const key in user) {
+            let divDescription = document.createElement('div');
+            if(key === 'address' || key === 'company'){
+                divDescription.innerHTML= ` ${key} :${JSON.stringify(user[key])}`
+            }
+            else{
+                divDescription.innerHTML=`${key} : ${user[key]}`
+            }
+            userContainer.appendChild(divDescription)
+        }
+        userBlock.appendChild(userContainer)
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cartOne{
+            border: 1px solid;
+            margin: 5px;
+            padding: 4px;
+        }
+        .products{
+            border: 1px solid;
+            margin: 5px;
+            padding: 4px;
+        }
+        .oneProduct{
+            border: 1px solid;
+            margin: 4px;
+            padding: 3px;
+        }
+        img{
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<div class="carts"></div>
+<script>
+    // //- взяти https://dummyjson.com/docs/carts та вивести інформацію про всі корзини.
+    // Відобразити всі поля кожної корзини.
+
+    let cartsBock = document.getElementsByClassName('carts')[0];
+    let url = new URL('https://dummyjson.com/carts');
+    url.searchParams.set('limit','0')
+    fetch(url)
+        .then(value  => value.json())
+        .then(data =>{
+            let carts = data['carts'];
+            for (const cart of carts) {
+                let divCartContainer = document.createElement('div');
+                divCartContainer.classList.add('cartOne');
+
+                for (const key in cart) {
+                    let divDescription = document.createElement('div')
+
+                    if(key === 'products'){
+                        divDescription.innerHTML=`Products: <br>`
+                        let divProducts = document.createElement('div');
+                        divProducts.classList.add('products')
+                        for (const itemProduct of cart[key]) {
+                            for (const itemProductKey in itemProduct) {
+                                let divProductItems  = document.createElement('div')
+                                divProductItems.classList.add('productItem');
+
+                                if(itemProductKey ==='thumbnail'){
+                                    let image = document.createElement('img')
+                                    image.src = itemProduct[itemProductKey];
+                                    divProducts.appendChild(image);
+                                }
+                                else{
+                                    divProductItems.innerHTML=`${itemProductKey} : ${itemProduct[itemProductKey]}`
+                                    divProducts.appendChild(divProductItems);
+                                }
+                            }
+                        }
+                        divDescription.appendChild(divProducts);
+                    }
+                    else{
+                        divDescription.innerHTML =`${key}: ${cart[key]} <br>`
+                    }
+                    divCartContainer.appendChild(divDescription);
+                }
+                cartsBock.appendChild(divCartContainer);
+            }
+        });
+</script>
+</body>
+</html>

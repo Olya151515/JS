@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        img{
+            width: 150px;
+        }
+        .oneRecipe{
+            border: 2px solid;
+            margin: 7px;
+            padding: 6px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="recipes"></div>
+<script>
+    // - взяти https://dummyjson.com/docs/recipes та вивести інформацію про всі рецепти. Інгредієнти повинні бути список під час відображення.
+
+    let url = new URL('https://dummyjson.com/recipes');
+
+    url.searchParams.set('limit','0')
+    let recipesBlock = document.getElementsByClassName('recipes')[0];
+    fetch(url)
+    .then(value =>value.json())
+    .then(data =>{
+        let recipes = data['recipes'];
+
+        for (const recipe of recipes) {
+           let divContainer = document.createElement('div');
+           divContainer.classList.add('oneRecipe')
+            for (const key in recipe) {
+                let divDescription = document.createElement('div');
+                if(key === 'ingredients'){
+                    divDescription.innerHTML =`Ingredients:<br>`
+                    let ul = document.createElement('ul');
+                    for (const ingredient of recipe[key]) {
+                        let li = document.createElement('li');
+                        li.innerHTML = `${ingredient}`;
+                        ul.appendChild(li);
+                    }
+                    divDescription.appendChild(ul)
+                }
+                else if(key ==='image'){
+                    let image = document.createElement('img');
+                    image.src = `${recipe[key]}`;
+                    divDescription.appendChild(image)
+                }
+                else if(key ==='instructions'){
+                    divDescription.innerHTML =`Instructions:<br>`
+                    let ol = document.createElement('ol');
+                    for (const instructions of recipe[key]) {
+                        let li = document.createElement('li');
+                        li.innerHTML = `${instructions}`;
+                        ol.appendChild(li);
+                    }
+                    divDescription.appendChild(ol)
+                }
+                else{
+                    divDescription.innerHTML =`${key}: ${recipe[key]}`
+                }
+                divContainer.appendChild(divDescription)
+            }
+            recipesBlock.appendChild(divContainer)
+        }
+    });
+</script>
+</body>
+</html>
